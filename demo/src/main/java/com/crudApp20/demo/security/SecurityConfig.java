@@ -19,22 +19,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                .antMatchers("/sales", "/sales/**").hasRole("SALES")
-                .antMatchers("/", "/home", "/home/**").permitAll()
-                .antMatchers("/styles/**", "/js/**", "/images/**").permitAll()
-                .anyRequest().hasRole("USER")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?login_error=1")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
+//                .antMatchers("/sales", "/sales/**").hasRole("SALES")
+//                .antMatchers("/", "/home", "/home/**").permitAll()
+//                .antMatchers("/styles/**", "/js/**", "/images/**").permitAll()
+//                .anyRequest().hasRole("USER")
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .failureUrl("/login?login_error=1")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/")
+//                .permitAll();
         // how to add http.csrf().ignoringAntMatchers("/admin/addUser/**" , "/admin/deleteUser/**");
         super.configure(http);
 
