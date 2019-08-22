@@ -6,6 +6,7 @@
 package com.crudApp20.demo.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
  *
  * @author jackelder
  */
+@Entity
 public class Role {
 
     @Id

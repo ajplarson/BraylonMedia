@@ -43,7 +43,7 @@ public class User {
     private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "userrole",
+    @JoinTable(name = "userRole",
             joinColumns = {
                 @JoinColumn(name = "userId")},
             inverseJoinColumns = {
