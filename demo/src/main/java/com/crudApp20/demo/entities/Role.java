@@ -5,6 +5,7 @@
  */
 package com.crudApp20.demo.entities;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,34 @@ public class Role {
     public void setRole(String role) {
         this.role = role;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.roleId);
+        hash = 97 * hash + Objects.hashCode(this.role);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Role other = (Role) obj;
+        if (!Objects.equals(this.role, other.role)) {
+            return false;
+        }
+        if (!Objects.equals(this.roleId, other.roleId)) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.crudApp20.demo.entities;
 
 import java.util.List;
@@ -15,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -49,6 +45,10 @@ public class User {
             inverseJoinColumns = {
                 @JoinColumn(name = "roleId")})
     private List<Role> roles;
+    
+    @OneToMany
+    @JoinColumn(name = "userId")
+    private List<Order> orders;
 
     public List<Role> getRole() {
         return roles;
@@ -105,5 +105,7 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    
 
 }
