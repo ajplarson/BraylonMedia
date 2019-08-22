@@ -27,7 +27,7 @@ public class SalesVisit {
     private Integer salesVisitId;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDate visitDate;
 
     @ManyToOne
     @JoinColumn(name = "customerId")
@@ -52,12 +52,12 @@ public class SalesVisit {
         this.salesVisitId = salesVisitId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getVisitDate() {
+        return visitDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setVisitDate(LocalDate visitDate) {
+        this.visitDate = visitDate;
     }
 
     public Customer getCustomer() {
@@ -103,13 +103,13 @@ public class SalesVisit {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 47 * hash + Objects.hashCode(this.salesVisitId);
-        hash = 47 * hash + Objects.hashCode(this.date);
-        hash = 47 * hash + Objects.hashCode(this.customer);
-        hash = 47 * hash + Objects.hashCode(this.user);
-        hash = 47 * hash + Objects.hashCode(this.location);
-        hash = 47 * hash + Objects.hashCode(this.notes);
-        hash = 47 * hash + Objects.hashCode(this.order);
+        hash = 43 * hash + Objects.hashCode(this.salesVisitId);
+        hash = 43 * hash + Objects.hashCode(this.visitDate);
+        hash = 43 * hash + Objects.hashCode(this.customer);
+        hash = 43 * hash + Objects.hashCode(this.user);
+        hash = 43 * hash + Objects.hashCode(this.location);
+        hash = 43 * hash + Objects.hashCode(this.notes);
+        hash = 43 * hash + Objects.hashCode(this.order);
         return hash;
     }
 
@@ -134,7 +134,7 @@ public class SalesVisit {
         if (!Objects.equals(this.salesVisitId, other.salesVisitId)) {
             return false;
         }
-        if (!Objects.equals(this.date, other.date)) {
+        if (!Objects.equals(this.visitDate, other.visitDate)) {
             return false;
         }
         if (!Objects.equals(this.customer, other.customer)) {
@@ -148,4 +148,5 @@ public class SalesVisit {
         }
         return true;
     }
+    
 }
