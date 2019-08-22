@@ -34,10 +34,6 @@ public class SaleController {
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
-//        System.out.println("hi");
-//        for(SalesVisit s : sVisit.findSalesVisitsAfter(LocalDate.now())){
-//            System.out.println(s.getCustomer().getCompanyName());
-//        }
         return "salesHome";
     }
 }
