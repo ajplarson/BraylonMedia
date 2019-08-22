@@ -42,7 +42,7 @@ public class Order {
     @Column(nullable = false)
     private BigDecimal price;
     
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany 
     @JoinTable(name = "orderproduct",
             joinColumns = {
                 @JoinColumn(name = "orderId")},

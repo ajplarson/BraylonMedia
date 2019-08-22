@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TestController {
+    
     private OrderDao orderDao;
     
     public TestController(OrderDao orderDao){
         this.orderDao=orderDao;
     }
-    @GetMapping("/")
+    @GetMapping("/hom")
     public List<Order> orderList(){
         return orderDao.findAll();
     }
