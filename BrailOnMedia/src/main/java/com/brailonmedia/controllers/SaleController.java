@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.brailonmedia;
+package com.brailonmedia.controllers;
 
 import com.brailonmedia.com.brailonmedia.data.OrderDao;
 import com.brailonmedia.com.brailonmedia.data.SalesVisitDao;

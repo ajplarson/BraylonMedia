@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.brailonmedia;
+package com.brailonmedia.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
