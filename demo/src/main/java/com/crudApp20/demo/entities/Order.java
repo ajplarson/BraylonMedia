@@ -2,12 +2,17 @@ package com.crudApp20.demo.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -35,8 +40,13 @@ public class Order {
     @Column(nullable = false)
     private BigDecimal price;
     
-    @Column(nullable = false)
-    private Integer userId;
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(name = "orderproduct",
+            joinColumns = {
+                @JoinColumn(name = "orderId")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "productId")})
+    private List<Product> products;
 
     public Integer getOrderId() {
         return orderId;
@@ -86,24 +96,24 @@ public class Order {
         this.price = price;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.orderId);
-        hash = 29 * hash + Objects.hashCode(this.customerId);
-        hash = 29 * hash + Objects.hashCode(this.orderDate);
-        hash = 29 * hash + Objects.hashCode(this.fulfillmentDate);
-        hash = 29 * hash + Objects.hashCode(this.status);
-        hash = 29 * hash + Objects.hashCode(this.price);
-        hash = 29 * hash + Objects.hashCode(this.userId);
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.orderId);
+        hash = 41 * hash + Objects.hashCode(this.customerId);
+        hash = 41 * hash + Objects.hashCode(this.orderDate);
+        hash = 41 * hash + Objects.hashCode(this.fulfillmentDate);
+        hash = 41 * hash + Objects.hashCode(this.status);
+        hash = 41 * hash + Objects.hashCode(this.price);
+        hash = 41 * hash + Objects.hashCode(this.products);
         return hash;
     }
 
@@ -137,10 +147,12 @@ public class Order {
         if (!Objects.equals(this.price, other.price)) {
             return false;
         }
-        if (!Objects.equals(this.userId, other.userId)) {
+        if (!Objects.equals(this.products, other.products)) {
             return false;
         }
         return true;
     }
+    
+    
 
 }
