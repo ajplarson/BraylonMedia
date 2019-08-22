@@ -29,14 +29,14 @@
                         </tr>
                     </thead>
                     <tbody id="customerTableBody">
-                        <tr>
-                            <td>1</td>
-                            <td>Jim</td>
-                            <td>Jones</td>
-                            <td>Peoples Temple</td>
-                            <td>Company Address</td>
-                            <td>Company Phone Number</td>
-                            <td>Customer's Email</td>
+                        <tr th:each="customer : ${customers}">
+                            <td th:text="${customer.customerId}">1</td>
+                            <td th:text="${customer.customerFirstName}">Jim</td>
+                            <td th:text="${customer.customerLastName}">Jones</td>
+                            <td th:text="${customer.companyName}">Peoples Temple</td>
+                            <td th:text="${customer.address}">Company Address</td>
+                            <td th:text="${customer.phone}">Company Phone Number</td>
+                            <td th:text="${customer.email}">Customer's Email</td>
                         </tr>
                     </tbody>
                 </table>

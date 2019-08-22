@@ -5,6 +5,7 @@
  */
 package com.brailonmedia.controllers;
 
+import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import java.time.LocalDate;
@@ -22,11 +23,13 @@ public class SaleController {
     
     private OrderDao oDao;
     private SalesVisitDao sVisit;
+    private CustomerDao cDao;
 
     
-    public SaleController(OrderDao oDao, SalesVisitDao sVisit) {
+    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao) {
         this.oDao = oDao;
         this.sVisit = sVisit;
+        this.cDao = cDao;
     }
 
     
@@ -36,4 +39,12 @@ public class SaleController {
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
+    
+    @GetMapping("/sales/customers")
+    public String displayCustomers(Model model) {
+        model.addAttribute("customers");
+        
+        return "customer";
+    }
+    
 }
