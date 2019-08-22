@@ -19,12 +19,12 @@ create table `User` (
 	userId int primary key auto_increment,
     username varchar(50) not null,
     email varchar(50) not null,
-    password varchar(50) not null,
+    password varchar(1000) not null,
     enabled boolean not null,
     firstName varchar(50) not null,
     lastName varchar(50) not null
 );
-insert into User values (1,'Andrew','andrew@yahoomail.hotmail.com','password',1,'Andrew','Larson'),(2,'BigAl','albertLarge@gmail.big','password',1,'Big','Boy'),(3,'Daveson','44lexingtonparkway@address.com','password',1,'Dave','SonOfDave');
+insert into User values (1,'Andrew','andrew@yahoomail.hotmail.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Andrew','Larson'),(2,'BigAl','albertLarge@gmail.big','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Big','Boy'),(3,'Daveson','44lexingtonparkway@address.com','$2a$10$IuKgHhWowwrQt9i5IgxB6uU.3Mr5l32DiRCbddTfP1vptAnW5BwWe',1,'Dave','SonOfDave');
 create table `Order` (
 	orderId int primary key auto_increment,
     customerId int not null,

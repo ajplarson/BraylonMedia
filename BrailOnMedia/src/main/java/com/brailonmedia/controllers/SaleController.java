@@ -33,18 +33,17 @@ public class SaleController {
     }
 
     
-    @GetMapping("/")
+    @GetMapping("/d")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
     
-    @GetMapping("/sales/customers")
+    @GetMapping("/")
     public String displayCustomers(Model model) {
         model.addAttribute("customers");
-        
-        return "customers";
+        return "customer";
     }
     
 }

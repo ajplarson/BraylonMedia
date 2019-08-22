@@ -5,10 +5,18 @@
  */
 package com.brailonmedia;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 /**
  *
  * @author vince
  */
 public class AGHh {
-    
+     public static void main(String[] args) {
+        String clearTxtPw = "password";
+        // BCrypt
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPw = encoder.encode(clearTxtPw);
+        System.out.println(hashedPw);
+    }
 }
