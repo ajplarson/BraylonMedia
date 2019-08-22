@@ -1,71 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Add Customer</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div th:replace="~{sharedNav :: navbar ('customer-add')}"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <form>
-            <div class="form-group">
-              <label for="customerFirstName">First Name</label>
-              <input type="text" class="form-control" id="customerFirstName" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Add Customer</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <style>
+    .validation-summary {
+      color: #dc3545;
+    }
+  </style>
+</head>
+
+<body>
+  <div th:replace="~{sharedNav :: navbar ('customer-add')}"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <form method="POST">
+          <div class="form-group">
+            <label for="customerFirstName">First Name</label>
+            <input type="text" class="form-control is-invalid" name="customerFirstName" id="customerFirstName"
+              required />
+            <div class="invalid-feedback">
+              Customer first name is required.
             </div>
-            <div class="form-group">
-              <label for="customerLastName">Last Name</label>
-              <input type="text" class="form-control" id="customerLastName" />
+          </div>
+          <div class="form-group">
+            <label for="customerLastName">Last Name</label>
+            <input type="text" class="form-control is-invalid" name="customerLastName" id="customerLastName" required />
+            <div class="invalid-feedback">
+              Customer last name is required.
             </div>
-            <div class="form-group">
-              <label for="customerAddress">Address</label>
-              <input type="text" class="form-control" id="customerAddress" />
+          </div>
+          <div class="form-group">
+            <label for="customerAddress">Address</label>
+            <input type="text" class="form-control is-invalid" name="address" id="customerAddress" required />
+            <div class="invalid-feedback">
+              Company address is required.
             </div>
-            <div class="form-group">
-              <label for="customerCompanyName">Company</label>
-              <input
-                type="text"
-                class="form-control"
-                id="customerCompanyName"
-              />
+          </div>
+          <div class="form-group">
+            <label for="customerCompanyName">Company</label>
+            <input type="text" class="form-control is-invalid" name="companyName" id="customerCompanyName" required />
+            <div class="invalid-feedback">
+              Customer's company is required.
             </div>
-            <div class="form-group">
-              <label for="customerPhone">Phone</label>
-              <input type="tel" class="form-control" id="customerPhone" />
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Phone</label>
+            <input type="tel" class="form-control is-invalid" name="phone" id="customerPhone" required />
+            <div class="invalid-feedback">
+              Customer phone number is required.
             </div>
-            <div class="form-group">
-              <label for="customerEmail">Email address</label>
-              <input type="email" class="form-control" id="customerEmail" />
+          </div>
+          <div class="form-group">
+            <label for="customerEmail">Email address</label>
+            <input type="email" class="form-control is-invalid" name="email" id="customerEmail" required />
+            <div class="invalid-feedback">
+              Customer email is required.
             </div>
-​
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
+          </div>
+          ​
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

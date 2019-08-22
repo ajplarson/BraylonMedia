@@ -8,10 +8,14 @@ package com.brailonmedia.controllers;
 import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
+import com.brailonmedia.entities.Customer;
 import java.time.LocalDate;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -43,7 +47,13 @@ public class SaleController {
     @GetMapping("/")
     public String displayCustomers(Model model) {
         model.addAttribute("customers");
-        return "customer";
+        return "customers";
+    }
+    
+    @PostMapping("/sales/customers")
+    public String addCustomer(@Valid Customer customer, BindingResult result) {
+        cDao.save(customer);
+        return "customers";
     }
     
 }
