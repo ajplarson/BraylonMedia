@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+</html>
 
 <head>
   <meta charset="UTF-8" />
@@ -8,6 +10,12 @@
   <title>Sales Home</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <style>
+    .container {
+      padding-top: 15px;
+      padding-bottom: 50px;
+    }
+  </style>
 </head>
 
 <body>
@@ -17,7 +25,7 @@
     <div>
       <table class="table">
         <h3>Pending Orders</h3>
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Order ID</th>
             <th scope="col">Customer</th>
@@ -41,7 +49,7 @@
     <div>
       <table class="table">
         <h3>Upcoming Visits</h3>
-        <thead>
+        <thead class="thead-dark">
           <tr>
             <th scope="col">Customer</th>
             <th scope="col">Company</th>
