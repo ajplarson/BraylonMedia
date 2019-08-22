@@ -105,6 +105,22 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
     
     
 
