@@ -1,25 +1,27 @@
 <html>
 
+<html>
+
 <head th:fragment="head (title)">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="${title}">Page Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title th:text="${title}">Calendar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="/theme.css">
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 </head>
+​
 
 <body>
     <div class="container">
-        <iframe src="https://calendar.google.com/calendar/embed?src=andrewjplarson%40gmail.com&ctz=America%2FChicago"
-            style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
-
-
-
-
+        <div th:replace="~{shared :: navbar ('salesHome')}"></div>
+        <div class="row">
+            <iframe
+                src="https://calendar.google.com/calendar/embed?src=70legantete6cm93prhdfep108%40group.calendar.google.com&ctz=America%2FChicago"
+                style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
     </div>
 </body>
 
 </html>
+Collapse
