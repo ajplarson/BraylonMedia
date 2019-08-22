@@ -1,4 +1,4 @@
-package com.brailonmedia.com.brailonmedia.entities;
+package com.brailonmedia.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

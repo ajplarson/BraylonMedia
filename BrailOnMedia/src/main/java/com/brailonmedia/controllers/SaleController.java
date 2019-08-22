@@ -5,8 +5,8 @@
  */
 package com.brailonmedia.controllers;
 
-import com.brailonmedia.com.brailonmedia.data.OrderDao;
-import com.brailonmedia.com.brailonmedia.data.SalesVisitDao;
+import com.brailonmedia.data.OrderDao;
+import com.brailonmedia.data.SalesVisitDao;
 import java.time.LocalDate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
-package com.brailonmedia.com.brailonmedia.data;
+package com.brailonmedia.data;
 
-import com.brailonmedia.com.brailonmedia.entities.Role;
+import com.brailonmedia.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

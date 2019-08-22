@@ -1,4 +1,4 @@
-package com.brailonmedia.com.brailonmedia.entities;
+package com.brailonmedia.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

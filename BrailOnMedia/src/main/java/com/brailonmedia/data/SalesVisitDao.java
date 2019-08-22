@@ -1,6 +1,6 @@
-package com.brailonmedia.com.brailonmedia.data;
+package com.brailonmedia.data;
 
-import com.brailonmedia.com.brailonmedia.entities.SalesVisit;
+import com.brailonmedia.entities.SalesVisit;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
