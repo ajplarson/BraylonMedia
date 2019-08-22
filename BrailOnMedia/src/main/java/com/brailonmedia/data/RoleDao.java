@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
  * @author jackelder
  */@Repository
 public interface RoleDao extends JpaRepository<Role, Integer> {
+     
+     public Role findRoleByRole(String role);
     
 }
