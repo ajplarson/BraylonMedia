@@ -85,15 +85,24 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.customerId);
-        hash = 97 * hash + Objects.hashCode(this.customerFirstName);
-        hash = 97 * hash + Objects.hashCode(this.customerLastName);
-        hash = 97 * hash + Objects.hashCode(this.companyName);
-        hash = 97 * hash + Objects.hashCode(this.phone);
-        hash = 97 * hash + Objects.hashCode(this.email);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.customerId);
+        hash = 79 * hash + Objects.hashCode(this.customerFirstName);
+        hash = 79 * hash + Objects.hashCode(this.customerLastName);
+        hash = 79 * hash + Objects.hashCode(this.companyName);
+        hash = 79 * hash + Objects.hashCode(this.phone);
+        hash = 79 * hash + Objects.hashCode(this.address);
+        hash = 79 * hash + Objects.hashCode(this.email);
         return hash;
     }
 
@@ -119,6 +128,9 @@ public class Customer implements Serializable {
             return false;
         }
         if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
             return false;
         }
         if (!Objects.equals(this.email, other.email)) {
