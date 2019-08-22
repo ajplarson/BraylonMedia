@@ -24,10 +24,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
-    
+   
     @ManyToOne
     @JoinColumn(name = "customerId")
-    private Customer customerId;
+    private Customer customer;
     
     @Column(nullable = false)
     private LocalDateTime orderDate;
@@ -57,14 +57,15 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
+   
     public LocalDateTime getOrderDate() {
         return orderDate;
     }
