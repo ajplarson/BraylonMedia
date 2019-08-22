@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,8 +26,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
     
-    @Column(nullable = false)
-    private Integer customerId;
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
     
     @Column(nullable = false)
     private LocalDateTime orderDate;
@@ -56,12 +58,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public LocalDateTime getOrderDate() {
@@ -107,13 +109,13 @@ public class Order {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.orderId);
-        hash = 41 * hash + Objects.hashCode(this.customerId);
-        hash = 41 * hash + Objects.hashCode(this.orderDate);
-        hash = 41 * hash + Objects.hashCode(this.fulfillmentDate);
-        hash = 41 * hash + Objects.hashCode(this.status);
-        hash = 41 * hash + Objects.hashCode(this.price);
-        hash = 41 * hash + Objects.hashCode(this.products);
+        hash = 13 * hash + Objects.hashCode(this.orderId);
+        hash = 13 * hash + Objects.hashCode(this.customer);
+        hash = 13 * hash + Objects.hashCode(this.orderDate);
+        hash = 13 * hash + Objects.hashCode(this.fulfillmentDate);
+        hash = 13 * hash + Objects.hashCode(this.status);
+        hash = 13 * hash + Objects.hashCode(this.price);
+        hash = 13 * hash + Objects.hashCode(this.products);
         return hash;
     }
 
@@ -135,7 +137,7 @@ public class Order {
         if (!Objects.equals(this.orderId, other.orderId)) {
             return false;
         }
-        if (!Objects.equals(this.customerId, other.customerId)) {
+        if (!Objects.equals(this.customer, other.customer)) {
             return false;
         }
         if (!Objects.equals(this.orderDate, other.orderDate)) {
@@ -152,7 +154,5 @@ public class Order {
         }
         return true;
     }
-    
-    
 
 }
