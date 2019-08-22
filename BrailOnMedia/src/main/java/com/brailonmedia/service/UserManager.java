@@ -30,6 +30,12 @@ public class UserManager {
         return userDao.findAll();
     }
     
+    public String encode(String password){
+        return encoder.encode(password);
+    }
     
+    public User getAccountByEmail(String email){
+        return userDao.findByEmail(email);
+    }
     
 }
