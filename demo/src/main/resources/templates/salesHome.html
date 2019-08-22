@@ -27,7 +27,7 @@
         <h3>Pending Orders</h3>
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Order ID</th>
+            <th scope="col" >Order ID</th>
             <th scope="col">Customer</th>
             <th scope="col">Company</th>
             <th scope="col">Order Date</th>
@@ -35,11 +35,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Order ID</td>
-            <td>Customer First and Last Name</td>
-            <td>Company</td>
-            <td>Order Date</td>
+          <tr th:each="sale : ${salesPending}">
+            <td th:text="${sale.orderId}">Order ID</td>
+            <td th:text="${sale.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">Customer First and Last Name</td>
+            <td th:text="${sale.customer.companyName}">Company</td>
+            <td th:text="${sale.orderDate}">Order Date</td>
             <td>Total</td>
           </tr>
         </tbody>
@@ -59,12 +59,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Customer First and Last Name</td>
-            <td>Company Name</td>
-            <td>Date</td>
-            <td>Location</td>
-            <td>Notes</td>
+          <tr th:each="visit : ${visitsUpcoming}">
+            <td th:text="${visit.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}"}">Customer First and Last Name</td>
+            <td th:text="${visit.customer.companyName}">Company Name</td>
+            <td th:text="${visit.date}">Date</td>
+            <td th:text="${visit.location}">Location</td>
+            <td th:text="${visit.notes}">Notes</td>
           </tr>
         </tbody>
       </table>
