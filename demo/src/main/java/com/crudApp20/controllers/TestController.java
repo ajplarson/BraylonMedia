@@ -23,6 +23,7 @@ public class TestController {
     public TestController(OrderDao orderDao){
         this.orderDao=orderDao;
     }
+    
     @GetMapping("/hom")
     public List<Order> orderList(){
         return orderDao.findAll();
