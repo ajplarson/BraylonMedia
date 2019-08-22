@@ -8,17 +8,15 @@ package com.brailonmedia.controllers;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import java.time.LocalDate;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author vince
  */
-@RestController
-
-
+@Controller
 public class SaleController {
 
     
@@ -32,11 +30,14 @@ public class SaleController {
     }
 
     
-    @GetMapping("/sales")
+    @GetMapping("/")
     public String displaySalesHome(Model model) {
-        model.addAttribute("salesPending", oDao.findByStatus("pending"));
+        model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
-     
+//        System.out.println("hi");
+//        for(SalesVisit s : sVisit.findSalesVisitsAfter(LocalDate.now())){
+//            System.out.println(s.getCustomer().getCompanyName());
+//        }
         return "salesHome";
     }
 }

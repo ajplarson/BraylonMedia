@@ -20,9 +20,9 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/")
-    public String adsgsijd() {
-        return "salesHome";
-    }
+//    @GetMapping("/")
+//    public String adsgsijd() {
+//        return "salesHome";
+//    }
 
 }

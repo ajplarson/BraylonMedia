@@ -62,7 +62,7 @@
           <tr th:each="visit : ${visitsUpcoming}">
             <td th:text="${visit.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}"}>Customer First and Last Name</td>
             <td th:text="${visit.customer.companyName}">Company Name</td>
-            <td th:text="${visit.date}">Date</td>
+            <td th:text="${visit.visitDate}">Date</td>
             <td th:text="${visit.location}">Location</td>
             <td th:text="${visit.notes}">Notes</td>
           </tr>

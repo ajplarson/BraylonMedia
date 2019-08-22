@@ -4,82 +4,81 @@
 </html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Sales Home</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <style>
-    .container {
-      padding-top: 15px;
-      padding-bottom: 50px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sales Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <style>
+        .container {
+            padding-top: 15px;
+            padding-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <div th:replace="~{sharedNav :: navbar ('salesHome')}"></div>
+    <div class="container">
+        <div th:replace="~{sharedNav :: navbar ('salesHome')}"></div>
 
-    <div>
-      <table class="table">
-        <h3>Pending Orders</h3>
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col" >Order ID</th>
-            <th scope="col">Customer</th>
-            <th scope="col">Company</th>
-            <th scope="col">Order Date</th>
-            <th scope="col">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="sale : ${salesPending}">
-            <td th:text="${sale.orderId}">Order ID</td>
-            <td th:text="${sale.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">Customer First and Last Name</td>
-            <td th:text="${sale.customer.companyName}">Company</td>
-            <td th:text="${sale.orderDate}">Order Date</td>
-            <td>Total</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <div>
+            <table class="table">
+                <h3>Pending Orders</h3>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sale : ${salesPending}">
+                        <td th:text="${sale.orderId}">Order ID</td>
+                        <td th:text="${sale.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">Customer First and Last Name</td>
+                        <td th:text="${sale.customer.companyName}">Company</td>
+                        <td th:text="${sale.orderDate}">Order Date</td>
+                        <td>Total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <div>
-      <table class="table">
-        <h3>Upcoming Visits</h3>
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Customer</th>
-            <th scope="col">Company</th>
-            <th scope="col">Date</th>
-            <th scope="col">Location</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="visit : ${visitsUpcoming}">
-            <td th:text="${visit.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}"}">Customer First and Last Name</td>
-            <td th:text="${visit.customer.companyName}">Company Name</td>
-            <td th:text="${visit.date}">Date</td>
-            <td th:text="${visit.location}">Location</td>
-            <td th:text="${visit.notes}">Notes</td>
+        <div>
+            <table class="table">
+                <h3>Upcoming Visits</h3>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Customer</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="visit : ${visitsUpcoming}">
+                        <td th:text="${visit.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}" } ">Customer First and Last Name</td>
+            <td th:text="${visit.customer.companyName} ">Company Name</td>
+            <td th:text="${visit.date} ">Date</td>
+            <td th:text="${visit.location} ">Location</td>
+            <td th:text="${visit.notes} ">Notes</td>
           </tr>
         </tbody>
       </table>
     </div>
 
   </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
+    crossorigin="anonymous "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q "
+    crossorigin="anonymous "></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl "
+    crossorigin="anonymous "></script>
 </body>
 
 </html>

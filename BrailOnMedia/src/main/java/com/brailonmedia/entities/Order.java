@@ -27,7 +27,7 @@ public class Order {
     
     @ManyToOne
     @JoinColumn(name = "customerId")
-    private Customer customer;
+    private Customer customerId;
     
     @Column(nullable = false)
     private LocalDateTime orderDate;
@@ -42,7 +42,7 @@ public class Order {
     private BigDecimal price;
     
     @ManyToMany 
-    @JoinTable(name = "orderproduct",
+    @JoinTable(name = "orderProduct",
             joinColumns = {
                 @JoinColumn(name = "orderId")},
             inverseJoinColumns = {
@@ -57,12 +57,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Customer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
     }
 
     public LocalDateTime getOrderDate() {
@@ -105,53 +105,6 @@ public class Order {
         this.products = products;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.orderId);
-        hash = 13 * hash + Objects.hashCode(this.customer);
-        hash = 13 * hash + Objects.hashCode(this.orderDate);
-        hash = 13 * hash + Objects.hashCode(this.fulfillmentDate);
-        hash = 13 * hash + Objects.hashCode(this.status);
-        hash = 13 * hash + Objects.hashCode(this.price);
-        hash = 13 * hash + Objects.hashCode(this.products);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Order other = (Order) obj;
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.orderId, other.orderId)) {
-            return false;
-        }
-        if (!Objects.equals(this.customer, other.customer)) {
-            return false;
-        }
-        if (!Objects.equals(this.orderDate, other.orderDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.fulfillmentDate, other.fulfillmentDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.price, other.price)) {
-            return false;
-        }
-        if (!Objects.equals(this.products, other.products)) {
-            return false;
-        }
-        return true;
-    }
-
+    
+   
 }

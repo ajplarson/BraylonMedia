@@ -36,7 +36,7 @@ create table `Order` (
     foreign key (userId) references User(userId),
     foreign key (customerId) references Customer(customerId)
 );
-insert into `Order` values (1,1,'2019-02-12','2019-03-12','OnTrack','20123.12','1'),(2,2,'2019-02-12','2019-03-12','OnTrack','1234.12','2'),(3,1,'2019-02-12','2019-03-12','OnTrack','5342.12','2'),(4,2,'2019-02-12','2019-03-12','OnTrack','2123.12','3');
+insert into `Order` values (1,1,'2020-02-12','2020-03-12','OnTrack','20123.12','1'),(2,2,'2020-02-12','2020-03-12','OnTrack','1234.12','2'),(3,1,'2020-02-12','2020-03-12','OnTrack','5342.12','2'),(4,2,'2020-02-12','2020-03-12','OnTrack','2123.12','3');
 create table `Role`(
 	roleId int primary key auto_increment,
 	role varchar(50) not null
@@ -77,4 +77,4 @@ create table SalesVisit (
     foreign key (customerId) references Customer(customerId),
     foreign key (orderId) references `Order`(orderId)
 );
-insert into SalesVisit values (1,'2019-02-12',2,1,'Home','ahhh','1'),(2,'2019-02-14',1,2,'Company','ahhh','2'),(3,'2019-02-16',2,3,'Home','ahhh','3'),(4,'2019-02-17',1,2,'Home','ahhh','4'),(5,'2019-02-18',2,1,'AHOIASFH','ahhh','1')
+insert into SalesVisit values (1,'2020-02-12',2,1,'Home','ahhh','1'),(2,'2020-02-14',1,2,'Company','ahhh','2'),(3,'2020-02-16',2,3,'Home','ahhh','3'),(4,'2020-02-17',1,2,'Home','ahhh','4'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh','1')

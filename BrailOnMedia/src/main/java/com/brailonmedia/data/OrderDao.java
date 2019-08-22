@@ -3,6 +3,7 @@ package com.brailonmedia.data;
 import com.brailonmedia.entities.Order;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface OrderDao extends JpaRepository<Order, Integer> {
-    
-    public List<Order> findByStatus(String status);
+    @Query(value = "SELECT * from `Order` o where `status` like ?1",nativeQuery=true)
+    public List<Order> findAllByStatus(String status);
     
 }

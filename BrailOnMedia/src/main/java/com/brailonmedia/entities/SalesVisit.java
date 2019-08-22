@@ -36,13 +36,16 @@ public class SalesVisit {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+    
     @Column(nullable = false)
     private String location;
+    
     @Column(nullable = false)
     private String notes;
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "orderId")
+//    private Order order;
 
     public Integer getSalesVisitId() {
         return salesVisitId;
@@ -91,62 +94,62 @@ public class SalesVisit {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 43 * hash + Objects.hashCode(this.salesVisitId);
-        hash = 43 * hash + Objects.hashCode(this.visitDate);
-        hash = 43 * hash + Objects.hashCode(this.customer);
-        hash = 43 * hash + Objects.hashCode(this.user);
-        hash = 43 * hash + Objects.hashCode(this.location);
-        hash = 43 * hash + Objects.hashCode(this.notes);
-        hash = 43 * hash + Objects.hashCode(this.order);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final SalesVisit other = (SalesVisit) obj;
-        if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
-        if (!Objects.equals(this.notes, other.notes)) {
-            return false;
-        }
-        if (!Objects.equals(this.salesVisitId, other.salesVisitId)) {
-            return false;
-        }
-        if (!Objects.equals(this.visitDate, other.visitDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.customer, other.customer)) {
-            return false;
-        }
-        if (!Objects.equals(this.user, other.user)) {
-            return false;
-        }
-        if (!Objects.equals(this.order, other.order)) {
-            return false;
-        }
-        return true;
-    }
+//
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int hash = 5;
+//        hash = 43 * hash + Objects.hashCode(this.salesVisitId);
+//        hash = 43 * hash + Objects.hashCode(this.visitDate);
+//        hash = 43 * hash + Objects.hashCode(this.customer);
+//        hash = 43 * hash + Objects.hashCode(this.user);
+//        hash = 43 * hash + Objects.hashCode(this.location);
+//        hash = 43 * hash + Objects.hashCode(this.notes);
+//        hash = 43 * hash + Objects.hashCode(this.order);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final SalesVisit other = (SalesVisit) obj;
+//        if (!Objects.equals(this.location, other.location)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.notes, other.notes)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.salesVisitId, other.salesVisitId)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.visitDate, other.visitDate)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.customer, other.customer)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.user, other.user)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.order, other.order)) {
+//            return false;
+//        }
+//        return true;
+//    }
     
 }
