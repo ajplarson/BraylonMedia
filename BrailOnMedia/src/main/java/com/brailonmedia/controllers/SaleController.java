@@ -44,7 +44,7 @@ public class SaleController {
     public String displayCustomers(Model model) {
         model.addAttribute("customers");
         
-        return "customer";
+        return "customers";
     }
     
 }
