@@ -11,6 +11,7 @@ import com.brailonmedia.data.SalesVisitDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Customer;
 import com.brailonmedia.entities.Order;
+import com.brailonmedia.entities.SalesVisit;
 import java.time.LocalDate;
 import java.util.List;
 import javax.validation.Valid;
@@ -49,8 +50,9 @@ public class SaleController {
     public String displaySalesHome(Model model) {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         List<Order> orderList = oDao.findAllByStatusAndUserName("pending", currentUserName);
+        List<SalesVisit> salesList = sVisit.findSalesVisitsByUserAfter(currentUserName, LocalDate.now());
         model.addAttribute("salesPending", orderList);
-        model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
+        model.addAttribute("visitsUpcoming", salesList);
         return "salesHome";
     }
 
