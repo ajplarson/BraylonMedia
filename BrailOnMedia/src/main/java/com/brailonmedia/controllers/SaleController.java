@@ -74,5 +74,5 @@ public class SaleController {
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
         return "redirect:/salesCustomers";
-    }
+    }   
 }
