@@ -3,7 +3,7 @@ body {
     font-family: 'Lexend Deca', sans-serif;
 }
 
-jumbotron {
+.jumbotron {
     background-color: darkred;
     color: white;
     text-shadow:
