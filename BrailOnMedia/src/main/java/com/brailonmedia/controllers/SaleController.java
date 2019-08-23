@@ -10,10 +10,9 @@ import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Customer;
-import java.security.Principal;
+import com.brailonmedia.entities.User;
 import java.time.LocalDate;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -33,16 +32,19 @@ public class SaleController {
     private SalesVisitDao sVisit;
     private CustomerDao cDao;
     private UserDao uDao;
-    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao,UserDao udao) {
+
+    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao, UserDao udao) {
         this.oDao = oDao;
         this.sVisit = sVisit;
         this.cDao = cDao;
         this.uDao = uDao;
     }
+
     @GetMapping("/")
-    public String displayLanding(){
+    public String displayLanding() {
         return "redirect:/salesHome";
     }
+
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
@@ -52,10 +54,15 @@ public class SaleController {
 
     @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        int userId = uDao.findByUsername(principal.toString()).getUserId();
-        List<Customer> customerList = cDao.findAllCustomersByUser(userId);
+        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();  
+        System.out.println(currentUserName);
+        System.out.println("heloo");
+        currentUserName = "Andrew";
+        System.out.println("ahjfks");
+//        int userId = uDao.findUserUsername(currentUserName).getUserId();
+        System.out.println("hi");
+//        System.out.println(userId);
+        List<Customer> customerList = cDao.findAllCustomersByUser(currentUserName);
         model.addAttribute("customers", customerList);
         return "customers";
     }
@@ -71,6 +78,5 @@ public class SaleController {
         cDao.save(customer);
         return "redirect:/salesCustomers";
     }
-
 
 }

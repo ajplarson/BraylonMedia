@@ -2,6 +2,7 @@ package com.brailonmedia.data;
 
 import com.brailonmedia.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserDao extends JpaRepository<User, Integer> {
-    
-    public User findByUsername(String email);
-    
+//    @Query(value="Select u from User u where username like ?1",nativeQuery=true)
+
+    public User findUserByUsername(String username);
+
+    @Query(value = "Select u from User u where username like ?1", nativeQuery = true)
+    public User findUserUsername(String username);
 }

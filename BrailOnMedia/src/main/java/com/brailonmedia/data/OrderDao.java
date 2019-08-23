@@ -19,7 +19,7 @@ public interface OrderDao extends JpaRepository<Order, Integer> {
     @Query(value = "SELECT * FROM `Order` o WHERE `status` LIKE ?1 AND userId = ?2", nativeQuery=true)
     public List<Order> findAllByStatusAndUserId(String status, Integer userId);
     
-    @Query(value = "SELECT * FROM `Order` o WHERE `status` LIKE \"completed\" AND fulfillmentDate > ?1")
+    @Query(value = "SELECT o FROM Order o WHERE status LIKE 'completed' AND fulfillmentDate > ?1")
     public List<Order> findAllCompletedDateLimited(LocalDateTime dateCutoff);
     
 }

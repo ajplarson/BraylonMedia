@@ -36,7 +36,7 @@ public class UserManager {
     }
     
     public User createAccount(User user){
-        if(userDao.findByUsername(user.getUsername()) != null){
+        if(userDao.findUserByUsername(user.getUsername()) != null){
             user.setUserId(-1);
             return user;
         }
@@ -52,7 +52,7 @@ public class UserManager {
     }
     
     public User getUserByUsername(String username){
-        return userDao.findByUsername(username);
+        return userDao.findUserByUsername(username);
     }
     
 }
