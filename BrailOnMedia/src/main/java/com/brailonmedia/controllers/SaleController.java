@@ -8,9 +8,14 @@ package com.brailonmedia.controllers;
 import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
+import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Customer;
+import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,42 +29,48 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SaleController {
 
-    
     private OrderDao oDao;
     private SalesVisitDao sVisit;
     private CustomerDao cDao;
-
-    
-    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao) {
+    private UserDao uDao;
+    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao,UserDao udao) {
         this.oDao = oDao;
         this.sVisit = sVisit;
         this.cDao = cDao;
+        this.uDao = uDao;
     }
-
-    
-    @GetMapping("/asd")
+    @GetMapping("/")
+    public String displayLanding(){
+        return "redirect:/salesHome";
+    }
+    @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
-    
-    @GetMapping("/as")
+
+    @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
-        model.addAttribute("customers");
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        int userId = uDao.findByUsername(principal.toString()).getUserId();
+        List<Customer> customerList = cDao.findAllCustomersByUser(userId);
+        model.addAttribute("customers", customerList);
         return "customers";
     }
-    
-    @GetMapping("/")
+
+    @GetMapping("/salesAdd")
     public String displayAddCustomer(Model model) {
         model.addAttribute("customers");
         return "customer-add";
     }
-    
-    @PostMapping("/as")
+
+    @PostMapping("/salesAdd")
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
-        return "customers";
+        return "redirect:/salesCustomers";
     }
-    
+
+
 }

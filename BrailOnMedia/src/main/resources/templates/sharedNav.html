@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title th:text="${title}">Page Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="/theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                 <a class="nav-link" href="/salesHome">Home</a>
             </li>
             <li class="nav-item" th:classappend="${active == 'customers'}? 'active'">
-                <a class="nav-link" href="/customers">Customers</a>
+                <a class="nav-link" href="/salesCustomers">Customers</a>
             </li>
             <li class="nav-item" th:classappend="${active == 'orders'}? 'active'">
                 <a class="nav-link" href="/orders">Orders</a>
@@ -30,7 +31,7 @@
                 <a class="nav-link" href="/sales">Sales</a>
             </li>
             <li class="nav-item" th:classappend="${active == 'calendar'}? 'active'">
-                <a class="nav-link" href="/calendar">Orders</a>
+                <a class="nav-link" href="/calendar">Calendar</a>
             </li>
         </ul>
 

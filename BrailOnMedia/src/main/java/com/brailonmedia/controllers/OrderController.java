@@ -4,7 +4,9 @@ import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Order;
+import java.security.Principal;
 import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,9 +87,14 @@ public class OrderController {
             model.addAttribute("customers", customerDao.findAll());
             return "order-edit";
         }
-        
+
         orderDao.save(o);
-        
+
         return "redirect:/orders";
+    }
+
+    private String currentUserNameSimple(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        return principal.getName();
     }
 }

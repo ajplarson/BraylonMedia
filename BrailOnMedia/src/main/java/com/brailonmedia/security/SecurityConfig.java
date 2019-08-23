@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().hasRole("USER")
                 .and()
                 .formLogin()
+//                .successForwardUrl("/")
 //                .loginPage("/login")
                 .failureUrl("/login?login_error=1")
                 .permitAll()
@@ -39,9 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/")
                 .permitAll();
-        // how to add http.csrf().ignoringAntMatchers("/admin/addUser/**" , "/admin/deleteUser/**");
+        http.csrf().disable();
         super.configure(http);
-
     }
 
     @Autowired
