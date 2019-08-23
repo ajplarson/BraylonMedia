@@ -19,4 +19,8 @@ public interface SalesVisitDao extends JpaRepository<SalesVisit, Integer> {
         nativeQuery = true)
     public List<SalesVisit> findSalesVisitsAfter(LocalDate cutoffDate);
     
+    @Query(value="SELECT s.* FROM Salesvisit s JOIN user u ON s.userId = u.userId WHERE u.username = ?1 AND s.visitDate >= ?2",
+            nativeQuery=true)
+    public List<SalesVisit> findSalesVisitsByUserAfter(String username, LocalDate cutoffDate);
+    
 }
