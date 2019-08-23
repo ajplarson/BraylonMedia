@@ -5,6 +5,7 @@ import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Order;
 import com.brailonmedia.entities.User;
+import com.brailonmedia.service.UserManager;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -30,12 +31,14 @@ public class OrderController {
     private final OrderDao orderDao;
     private final UserDao userDao;
     private final CustomerDao customerDao;
+    private final UserManager userManager;
 
     @Autowired
-    public OrderController(OrderDao orderDao, UserDao userDao, CustomerDao customerDao) {
+    public OrderController(OrderDao orderDao, UserDao userDao, CustomerDao customerDao, UserManager userManager) {
         this.orderDao = orderDao;
         this.userDao = userDao;
         this.customerDao = customerDao;
+        this.userManager = userManager;
     }
 
     @GetMapping("/orders/all")
@@ -46,25 +49,32 @@ public class OrderController {
         return "orders";
     }
 
-    @GetMapping("/orders/add/{customerId}")
-    public String addOrderToCustomer(@PathVariable int customerId, Order order, Model model) {
+    @GetMapping("/orders/add/")
+    public String addOrderToCustomer(Order order, Model model) {
         model.addAttribute("users", userDao.findAll());
         model.addAttribute("customers", customerDao.findAll());
 
         return "order-add";
     }
 
-    @PostMapping("/orders/add/{customerId}")
-    public String addAssignment(@PathVariable int customerId, @Valid Order order,
-            BindingResult result, Model model) {
+    @PostMapping("/orders/add/")
+    public String addAssignment(@Valid Order order,
+            BindingResult result, Model model, Principal p) {
 
         if (result.hasErrors()) {
             model.addAttribute("users", userDao.findAll());
             model.addAttribute("customers", customerDao.findAll());
             return "order-add";
         }
-
-        orderDao.save(order);
+        
+        order = orderDao.save(order);
+        
+        User user = userManager.getUserByUsername(p.getName());
+        List<Order> orders = user.getOrders();
+        orders.add(order);
+        user.setOrders(orders);
+        
+        user = userDao.save(user);
 
         return "redirect:/";
     }
