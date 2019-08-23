@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class OrderController {
     
     private final String PENDING = "pending";
+    private final String COMPLETED = "completed";
+    private final String ARCHIVED = "archived";
 
     private final OrderDao orderDao;
     private final UserDao userDao;
@@ -106,12 +108,28 @@ public class OrderController {
         return orderDao.findAllByStatusAndUserName(PENDING, username);
     }
     
+    private List<Order> getAllCompletedOrdersByUser(String username){
+        return orderDao.findAllByStatusAndUserName(COMPLETED, username);
+    }
+    
+    private List<Order> getAllArchivedOrdersByUser(String username){
+        return orderDao.findAllByStatusAndUserName(ARCHIVED, username);
+    }
+    
     private List<Order> getAllPendingOrders(){
         return orderDao.findAllByStatus(PENDING);
     }
     
     private int getTotalNumberOfPendingOrders(){
         return getAllPendingOrders().size();
+    }
+    
+    private List<Order> getAllCompletedOrders(){
+        return orderDao.findAllByStatus(COMPLETED);
+    }
+    
+    private List<Order> getAllArchivedOrders(){
+        return orderDao.findAllByStatus(ARCHIVED);
     }
     
     private List<Order> getAllCompletedOrdersInPastWeek(){
