@@ -41,9 +41,4 @@ public class LoginController {
         }
         return "redirect:/salesHome";
     }
-
-//    @GetMapping("/")
-//    public String adsgsijd() {
-//        return "salesHome";
-//    }
 }
