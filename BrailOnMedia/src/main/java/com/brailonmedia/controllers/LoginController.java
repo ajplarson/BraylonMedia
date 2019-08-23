@@ -43,7 +43,7 @@ public class LoginController {
             return "admin";
         }
         if (userDao.findRoleByUsername(currentUserName).equals("Executive")) {
-            return "leaderHome";
+            return "redirect:/leaderHome";
         }
         return "redirect:/salesHome";
     }
