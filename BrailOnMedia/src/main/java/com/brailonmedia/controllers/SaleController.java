@@ -36,7 +36,10 @@ public class SaleController {
         this.sVisit = sVisit;
         this.cDao = cDao;
     }
-
+    @GetMapping("/")
+    public String displayLanding(){
+        return "redirect:/salesHome";
+    }
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
