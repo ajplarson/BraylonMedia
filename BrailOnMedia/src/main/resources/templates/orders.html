@@ -41,7 +41,7 @@
                             Customer First and Last Name</td>
                         <td th:text="${sale.customer.companyName}">Company</td>
                         <td th:text="${sale.orderDate}">Order Date</td>
-                        <td>Total</td>
+                        <td th:text="${sale.price}">Total</td>
                     </tr>
                 </tbody>
             </table>
@@ -61,13 +61,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="visit : ${visitsUpcoming}">
-                        <td th:text="${visit.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}" }>
+                    <tr th:each="saleC : ${salesCompleted}">
+                        <td th:text="${saleC.orderId}">Order Id</td>
+                        <td th:text="${saleC.customer.customerFirstName} + ' ' + ${visit.customer.customerLastName}" }>
                             Customer First and Last Name</td>
-                        <td th:text="${visit.customer.companyName}">Company Name</td>
-                        <td th:text="${visit.visitDate}">Date</td>
-                        <td th:text="${visit.location}">Location</td>
-                        <td th:text="${visit.notes}">Notes</td>
+                        <td th:text="${saleC.customer.companyName}">Company Name</td>
+                        <td th:text="${saleC.orderDate}">Order Date</td>
+                        <td th:text="${saleC.location}">Fullfilment Date</td>
+                        <td th:text="${saleC.price}">Total</td>
                     </tr>
                 </tbody>
             </table>
@@ -86,13 +87,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="sale : ${salesPending}">
-                        <td th:text="${sale.orderId}">Order ID</td>
-                        <td th:text="${sale.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">
+                    <tr th:each="saleA : ${salesArchived}">
+                        <td th:text="${saleA.orderId}">Order ID</td>
+                        <td th:text="${saleA.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">
                             Customer First and Last Name</td>
-                        <td th:text="${sale.customer.companyName}">Company</td>
-                        <td th:text="${sale.orderDate}">Order Date</td>
-                        <td>Total</td>
+                        <td th:text="${saleA.customer.companyName}">Company</td>
+                        <td th:text="${saleA.orderDate}">Order Date</td>
+                        <td th:text="${saleA.price}">Total</td>
                     </tr>
                 </tbody>
             </table>
