@@ -31,3 +31,8 @@ img.center {
         background-color: #F5F5F5;
         margin-bottom: 30px;
     }
+
+    .btn {
+        background-color: #520A0A;
+        color: white;
+    }
