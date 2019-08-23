@@ -5,6 +5,8 @@ import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Order;
 import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class OrderController {
+    
+    private final String PENDING = "pending";
 
     private final OrderDao orderDao;
     private final UserDao userDao;
@@ -97,4 +101,25 @@ public class OrderController {
         Principal principal = request.getUserPrincipal();
         return principal.getName();
     }
+    
+    private List<Order> getAllPendingOrdersByUser(Integer userId){
+        return orderDao.findAllByStatusAndUserId(PENDING, userId);
+    }
+    
+    private List<Order> getAllPendingOrders(){
+        return orderDao.findAllByStatus(PENDING);
+    }
+    
+    private int getTotalNumberOfPendingOrders(){
+        return getAllPendingOrders().size();
+    }
+    
+    private List<Order> getAllCompletedOrdersInPastWeek(){
+        return orderDao.findAllCompletedDateLimited(LocalDateTime.now().minusDays(7));
+    }
+    
+    private int getNumberOfCompletedOrdersInPastWeek(){
+        return getAllCompletedOrdersInPastWeek().size();
+    }
+    
 }
