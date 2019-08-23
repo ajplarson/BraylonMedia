@@ -73,5 +73,4 @@ public class SaleController {
         cDao.save(customer);
         return "redirect:/salesCustomers";
     }
-
 }
