@@ -50,7 +50,7 @@ create table `userRole`(
 	foreign key (userId) references User(userId),
 	foreign key (roleId) references Role(roleId)
 );
-insert into userRole values (1,1),(2,2),(3,3);
+insert into userRole values (1,2),(2,2),(3,3);
 create table `Product` (
 	productId int primary key auto_increment,
     productName varchar(50) not null,
@@ -79,7 +79,7 @@ create table SalesVisit (
     foreign key (orderId) references `Order`(orderId)
 );
 insert into SalesVisit values (1,'2020-02-12',2,1,'Home','ahhh','1'),(2,'2020-02-14',1,2,'Company','ahhh','2'),(3,'2020-02-16',2,3,'Home','ahhh','3'),(4,'2020-02-17',1,2,'Home','ahhh','4'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh','1');
-
+select * from Customer;
 select * from User;
 Select * from User u where username like "Andrew";
 select * from SalesVisit;
