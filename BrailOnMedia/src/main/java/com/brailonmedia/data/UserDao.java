@@ -1,6 +1,5 @@
 package com.brailonmedia.data;
 
-import com.brailonmedia.entities.Role;
 import com.brailonmedia.entities.User;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
