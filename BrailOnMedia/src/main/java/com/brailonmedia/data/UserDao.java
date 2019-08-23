@@ -17,4 +17,8 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
     @Query(value = "Select u from User u where username like ?1", nativeQuery = true)
     public User findUserUsername(String username);
+    
+    @Query(value = "SELECT COUNT(u.*) FROM user u JOIN userrole ur ON u.userId = ur.userId JOIN role r ON ur.roleId = r.roleId WHERE r.role LIKE 'salesrep'",
+            nativeQuery = true)
+    public Integer findSalesRepCount();
 }
