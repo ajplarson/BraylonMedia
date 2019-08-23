@@ -32,7 +32,6 @@ img.center {
         margin-bottom: 30px;
     }
 
-    .btn {
-        background-color: #520A0A;
+    .btn, a {
         color: white;
     }
