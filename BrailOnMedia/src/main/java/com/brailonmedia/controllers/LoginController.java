@@ -29,7 +29,7 @@ public class LoginController {
     public String displayLanding() {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         if(currentUserName.equalsIgnoreCase("Andrew")){
-            return "orders";
+            return "index";
         }
         return "redirect:/salesHome";
     }
