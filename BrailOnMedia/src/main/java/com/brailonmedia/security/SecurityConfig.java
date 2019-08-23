@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().hasRole("USER")
                 .and()
                 .formLogin()
-                .loginPage("/login")
+//                .loginPage("/login")
                 .failureUrl("/login?login_error=1")
                 .permitAll()
                 .and()

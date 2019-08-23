@@ -37,20 +37,26 @@ public class SaleController {
     }
 
     
-    @GetMapping("/d")
+    @GetMapping("/asd")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
     
-    @GetMapping("/")
+    @GetMapping("/as")
     public String displayCustomers(Model model) {
         model.addAttribute("customers");
         return "customers";
     }
     
-    @PostMapping("/sales/customers")
+    @GetMapping("/")
+    public String displayAddCustomer(Model model) {
+        model.addAttribute("customers");
+        return "customer-add";
+    }
+    
+    @PostMapping("/as")
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
         return "customers";
