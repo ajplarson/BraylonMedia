@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 ​
-
-</html>
 ​
 
 <head>
@@ -18,62 +16,157 @@
       padding-bottom: 50px;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet" />
 </head>
+​
 ​
 
 <body>
   <div class="container">
-    <div th:replace="~{sharedLeader :: navbar ('leaderHome')}"></div>
+    <div th:replace="~{sharedNav :: navbar ('leaderHome')}"></div>
     ​
-    <div>
-      <table class="table">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Total # of Sales
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p th:text="{}">
+                65
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            Total $ of Sales
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p th:text="{}">
+                $100000000
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <h3>Last Week's Completed Orders</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Order Date</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+              <th scope="col">User ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="order : ${completedOrders}">
+              <td th:text="${order.orderId}" }>Order ID</td>
+              <td th:text="${order.customer.companyName}">Customer</td>
+              <td th:text="${order.orderDate}">Date</td>
+              <td th:text="${order.price}">Price</td>
+              <td th:text="${order.status}">Status</td>
+              <td th:text="${order.userId}">User ID</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Total Sales Reps
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p th:text="{}">
+                65
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
         <h3>Sales Team</h3>
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Enabled</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="user : ${users}">
-            <td th:text="${user.userId}">ID</td>
-            <td th:text="${user.firstName} + ' ' + ${user.lastName}">First Last </td>
-            <td th:text="${user.Enabled}">Enabled</td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
     </div>
-    ​
-    <div>
-      <table class="table">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Enabled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="user : ${users}">
+              <td th:text="${user.userId}">ID</td>
+              <td th:text="${user.firstName} + ' ' + ${user.lastName}">
+                First Last
+              </td>
+              <td th:text="${user.email}">Email</td>
+              <td th:text="${user.Enabled}">Enabled</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
         <h3>Pending Orders</h3>
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Customer</th>
-            <th scope="col">Order Date</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col">User ID</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="order : ${pendingOrders}">
-            <td th:text="${order.orderId}" }>Order ID</td>
-            <td th:text="${order.customer.companyName}">Customer</td>
-            <td th:text="${order.orderDate}">Date</td>
-            <td th:text="${order.price}">Price</td>
-            <td th:text="${order.status}">Status</td>
-            <td th:text="${order.userId}">User ID</td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
+      <div class="col right">
+        <a href="/orders/all" class="btn btn-primary">All Orders</a>
+      </div>
     </div>
-    ​
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Order Date</th>
+              <th scope="col">Price</th>
+              <th scope="col">Status</th>
+              <th scope="col">User ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="order : ${pendingOrders}">
+              <td th:text="${order.orderId}" }>Order ID</td>
+              <td th:text="${order.customer.companyName}">Customer</td>
+              <td th:text="${order.orderDate}">Date</td>
+              <td th:text="${order.price}">Price</td>
+              <td th:text="${order.status}">Status</td>
+              <td th:text="${order.userId}">User ID</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+  ​
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
