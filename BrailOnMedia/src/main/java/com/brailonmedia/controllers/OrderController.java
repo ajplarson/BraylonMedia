@@ -4,6 +4,7 @@ import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Order;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -98,6 +99,8 @@ public class OrderController {
 
         return "redirect:/orders";
     }
+    
+    //Basically, this is the service layer
 
     private String currentUserNameSimple(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -142,6 +145,22 @@ public class OrderController {
     
     private int getTotalNumberOfSalesReps(){
         return userDao.findSalesRepCount();
+    }
+    
+    private BigDecimal getTotalRevenueOfCompletedOrdersInPastWeek(){
+        BigDecimal total = BigDecimal.ZERO;
+        for(Order order : getAllCompletedOrdersInPastWeek()){
+            total.add(order.getPrice());
+        }
+        return total;
+    }
+    
+    private BigDecimal getTotalRevenueForPendingOrders(){
+        BigDecimal total = BigDecimal.ZERO;
+        for(Order order : getAllPendingOrders()){
+            total.add(order.getPrice());
+        }
+        return total;
     }
     
 }
