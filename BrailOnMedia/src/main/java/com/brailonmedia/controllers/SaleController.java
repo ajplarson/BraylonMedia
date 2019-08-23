@@ -10,6 +10,7 @@ import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import com.brailonmedia.entities.Customer;
 import java.time.LocalDate;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,29 +38,30 @@ public class SaleController {
     }
 
     
-    @GetMapping("/asd")
+    @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
     
-    @GetMapping("/as")
+    @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
-        model.addAttribute("customers");
+        List<Customer> customerList = cDao.findAll();
+        model.addAttribute("customers",customerList);
         return "customers";
     }
     
-    @GetMapping("/")
+    @GetMapping("/salesAdd")
     public String displayAddCustomer(Model model) {
         model.addAttribute("customers");
         return "customer-add";
     }
     
-    @PostMapping("/as")
+    @PostMapping("/salesAdd")
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
-        return "customers";
+        return "redirect:/salesCustomers";
     }
     
 }
