@@ -55,13 +55,6 @@ public class SaleController {
     @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();  
-        System.out.println(currentUserName);
-        System.out.println("heloo");
-        currentUserName = "Andrew";
-        System.out.println("ahjfks");
-//        int userId = uDao.findUserUsername(currentUserName).getUserId();
-        System.out.println("hi");
-//        System.out.println(userId);
         List<Customer> customerList = cDao.findAllCustomersByUser(currentUserName);
         model.addAttribute("customers", customerList);
         return "customers";
