@@ -41,11 +41,6 @@ public class SaleController {
         this.uDao = uDao;
     }
 
-    @GetMapping("/")
-    public String displayLanding() {
-        return "redirect:/salesHome";
-    }
-
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
