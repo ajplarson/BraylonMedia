@@ -4,11 +4,16 @@ body {
 }
 
 .jumbotron {
-    background-color: darkred;
+    background-color: #520A0A;
     color: white;
+    text-align: center;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
+}
+
+img {
+    text-align: center;
 }
