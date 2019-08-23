@@ -102,8 +102,8 @@ public class OrderController {
         return principal.getName();
     }
     
-    private List<Order> getAllPendingOrdersByUser(Integer userId){
-        return orderDao.findAllByStatusAndUserId(PENDING, userId);
+    private List<Order> getAllPendingOrdersByUser(String username){
+        return orderDao.findAllByStatusAndUserName(PENDING, username);
     }
     
     private List<Order> getAllPendingOrders(){

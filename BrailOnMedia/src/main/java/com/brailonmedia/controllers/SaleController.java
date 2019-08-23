@@ -10,7 +10,7 @@ import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Customer;
-import com.brailonmedia.entities.User;
+import com.brailonmedia.entities.Order;
 import java.time.LocalDate;
 import java.util.List;
 import javax.validation.Valid;
@@ -47,14 +47,16 @@ public class SaleController {
 
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
-        model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
+        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<Order> orderList = oDao.findAllByStatusAndUserName("pending", currentUserName);
+        model.addAttribute("salesPending", orderList);
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
 
     @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
-        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();  
+        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         List<Customer> customerList = cDao.findAllCustomersByUser(currentUserName);
         model.addAttribute("customers", customerList);
         return "customers";
