@@ -54,29 +54,29 @@ public class OrderController {
         return "order-add";
     }
 
-    @GetMapping("/orders/add/")
-    public String addOrderToCustomer(@PathVariable int customerId, Order order, Model model) {
-        model.addAttribute("users", userDao.findAll());
-        model.addAttribute("customers", customerDao.findAll());
-        ​
-        return "order-add";
-    }
-
-    @PostMapping("/orders/add/")
-    public String addAssignment(@Valid Order order, BindingResult result, Model model) {
-
-        if (result.hasErrors()) {
-            model.addAttribute("users", userDao.findAll());
-            model.addAttribute("customers", customerDao.findAll());
-            return "order-add";
-        }
-
-        order.setUserId(uManager.getUserByUser ?  ?  ?  ?);
-
-        orderDao.save(order);
-
-        return "redirect:/";
-    }
+//    @GetMapping("/orders/add/")
+//    public String addOrderToCustomer(@PathVariable int customerId, Order order, Model model) {
+//        model.addAttribute("users", userDao.findAll());
+//        model.addAttribute("customers", customerDao.findAll());
+//        ​
+//        return "order-add";
+//    }
+//
+//    @PostMapping("/orders/add/")
+//    public String addAssignment(@Valid Order order, BindingResult result, Model model) {
+//
+//        if (result.hasErrors()) {
+//            model.addAttribute("users", userDao.findAll());
+//            model.addAttribute("customers", customerDao.findAll());
+//            return "order-add";
+//        }
+//
+//        order.setUserId(uManager.getUserByUser ?  ?  ?  ?);
+//
+//        orderDao.save(order);
+//
+//        return "redirect:/";
+//    }
 
     @PostMapping("/orders/add/{customerId}")
 

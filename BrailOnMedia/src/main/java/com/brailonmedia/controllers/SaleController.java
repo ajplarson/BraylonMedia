@@ -44,7 +44,7 @@ public class SaleController {
     @GetMapping("/sales")
     public String displaySalesSalesVists(Model model) {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<SalesVisit> salesList = sVisit.findSalesVisitsByUserAfter(currentUserName, LocalDate.now());
+        List<SalesVisit> salesList = sVisit.findSalesByUSername(currentUserName);
         model.addAttribute("visits", salesList);
         return "salesVisit";
     }
