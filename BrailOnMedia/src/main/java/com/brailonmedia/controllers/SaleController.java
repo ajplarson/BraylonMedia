@@ -57,11 +57,12 @@ public class SaleController {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();  
         System.out.println(currentUserName);
         System.out.println("heloo");
-//        System.out.println(uDao.findByUsername(currentUserName));
-        int userId = uDao.findUserUsername(currentUserName).getUserId();
+        currentUserName = "Andrew";
+        System.out.println("ahjfks");
+//        int userId = uDao.findUserUsername(currentUserName).getUserId();
         System.out.println("hi");
-        System.out.println(userId);
-        List<Customer> customerList = cDao.findAllCustomersByUser(userId);
+//        System.out.println(userId);
+        List<Customer> customerList = cDao.findAllCustomersByUser(currentUserName);
         model.addAttribute("customers", customerList);
         return "customers";
     }

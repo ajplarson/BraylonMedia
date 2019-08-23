@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerDao extends JpaRepository<Customer, Integer> {
     
-    @Query(value = "SELECT c.*, s.userId FROM SalesVisit s JOIN Customer c ON s.customerId = c.customerId WHERE s.userId = ?1",
+    @Query(value = "SELECT c.*, s.userId FROM User u JOIN SalesVisit s ON s.customerId = u.userId JOIN Customer c ON s.customerID = c.customerID WHERE u.userId = ?1",
             nativeQuery = true)
-    public List<Customer> findAllCustomersByUser(Integer userId);
+    public List<Customer> findAllCustomersByUser(String username);
     
 }
