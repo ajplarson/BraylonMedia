@@ -9,8 +9,10 @@ import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
 import com.brailonmedia.entities.Customer;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,43 +27,45 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SaleController {
 
-    
     private OrderDao oDao;
     private SalesVisitDao sVisit;
     private CustomerDao cDao;
 
-    
     public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao) {
         this.oDao = oDao;
         this.sVisit = sVisit;
         this.cDao = cDao;
     }
 
-    
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         model.addAttribute("salesPending", oDao.findAllByStatus("pending"));
         model.addAttribute("visitsUpcoming", sVisit.findSalesVisitsAfter(LocalDate.now()));
         return "salesHome";
     }
-    
+
     @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
         List<Customer> customerList = cDao.findAll();
-        model.addAttribute("customers",customerList);
+        model.addAttribute("customers", customerList);
         return "customers";
     }
-    
+
     @GetMapping("/salesAdd")
     public String displayAddCustomer(Model model) {
         model.addAttribute("customers");
         return "customer-add";
     }
-    
+
     @PostMapping("/salesAdd")
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
         return "redirect:/salesCustomers";
     }
-    
+
+    private String currentUserNameSimple(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        return principal.getName();
+    }
+
 }
