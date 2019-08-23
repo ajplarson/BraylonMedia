@@ -41,7 +41,7 @@ create table `Role`(
 	roleId int primary key auto_increment,
 	role varchar(50) not null
 );
-insert into `Role` values (1,'Admin'),(2,'SalesPerson'),(3,'Executive');
+insert into `Role` values (1,'Admin'),(2,'SalesRep'),(3,'Executive');
 #bridge table 
 create table `userRole`(
 	userId int not null,
@@ -80,4 +80,7 @@ create table SalesVisit (
 );
 insert into SalesVisit values (1,'2020-02-12',2,1,'Home','ahhh','1'),(2,'2020-02-14',1,2,'Company','ahhh','2'),(3,'2020-02-16',2,3,'Home','ahhh','3'),(4,'2020-02-17',1,2,'Home','ahhh','4'),(5,'2020-02-18',2,1,'AHOIASFH','ahhh','1');
 
-
+select * from User;
+Select * from User u where username like "Andrew";
+select * from SalesVisit;
+SELECT c.*, s.userId FROM User u JOIN SalesVisit s ON s.customerId = u.userId JOIN Customer c ON s.customerID = c.customerID WHERE u.userId = 1;
