@@ -171,8 +171,8 @@ public class OrderController {
         }
         return total;
     }
-    
-    private List<User> getAllSalesReps(){
+
+    private List<User> getAllSalesReps() {
         return userDao.findAllSalesReps();
     }
 }

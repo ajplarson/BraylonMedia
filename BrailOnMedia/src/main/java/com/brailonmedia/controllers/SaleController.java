@@ -40,10 +40,15 @@ public class SaleController {
         this.cDao = cDao;
         this.uDao = uDao;
     }
+
     @GetMapping("/sales")
-    public String displaySalesSalesVists(){
+    public String displaySalesSalesVists(Model model) {
+        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<SalesVisit> salesList = sVisit.findSalesByUSername(currentUserName);
+        model.addAttribute("visits", salesList);
         return "salesVisit";
     }
+
     @GetMapping("/salesHome")
     public String displaySalesHome(Model model) {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();

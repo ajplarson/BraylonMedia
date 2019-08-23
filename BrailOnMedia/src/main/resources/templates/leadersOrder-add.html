@@ -13,9 +13,8 @@
 </head>
 
 <body>
-    
+    <div th:replace="~{sharedNav :: navbar ('order-add')}"></div>
     <div class="container">
-        <div th:replace="~{sharedNav :: navbar ('order-add')}"></div>
         <div class="row">
             <div class="col">
                 <form action="POST">
@@ -23,14 +22,12 @@
                         <label for="orderCustomer">Customer</label>
                         <select class="form-control" id="orderCustomer">
                             <option>list of customers</option>
+
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="orderDate">Order Date</label>
                         <input type="date" class="form-control" id="orderDate" />
-                        <div class="invalid-feedback">
-                            Order date is required.
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="orderFulfillmentDate">Fulfillment Date</label>
@@ -43,6 +40,13 @@
                     <div class="form-group">
                         <label for="orderPrice">Price</label>
                         <input type="number" class="form-control" id="orderPrice" />
+                    </div>
+                    <div class="form-group">
+                        <label for="orderSalesPerson">Sales Person</label>
+                        <select class="form-control" id="orderSalesPerson">
+                            <option>list of sales people</option>
+
+                        </select>
                     </div>
                     ​
                     <button type="submit" class="btn btn-primary">Submit</button>
