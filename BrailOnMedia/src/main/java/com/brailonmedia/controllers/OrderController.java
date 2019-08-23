@@ -140,4 +140,8 @@ public class OrderController {
         return getAllCompletedOrdersInPastWeek().size();
     }
     
+    private int getTotalNumberOfSalesReps(){
+        return userDao.findSalesRepCount();
+    }
+    
 }
