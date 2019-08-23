@@ -32,12 +32,18 @@ public class LoginController {
     public String displayLanding() {
         return "index";
     }
-    
+
     @GetMapping("/homeGet")
     public String getHome() {
         String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         if (userDao.findRoleByUsername(currentUserName).equals("SalesRep")) {
             return "redirect:/salesHome";
+        }
+        if (userDao.findRoleByUsername(currentUserName).equals("Admin")) {
+            return "admin";
+        }
+        if (userDao.findRoleByUsername(currentUserName).equals("Executive")) {
+            return "leaderHome";
         }
         return "redirect:/salesHome";
     }

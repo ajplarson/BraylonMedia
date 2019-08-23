@@ -50,7 +50,7 @@ create table `userRole`(
 	foreign key (userId) references User(userId),
 	foreign key (roleId) references Role(roleId)
 );
-insert into userRole values (1,2),(2,2),(3,3);
+insert into userRole values (1,2),(2,1),(3,3);
 create table `Product` (
 	productId int primary key auto_increment,
     productName varchar(50) not null,
