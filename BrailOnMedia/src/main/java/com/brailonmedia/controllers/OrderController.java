@@ -48,7 +48,7 @@ public class OrderController {
         model.addAttribute("salesPending", getAllPendingOrdersByUser(currentUserName));
         model.addAttribute("salesArchived", getAllArchivedOrdersByUser(currentUserName));
         model.addAttribute("salesCompleted", getAllCompletedOrdersByUser(currentUserName));
-        System.out.println(getAllPendingOrdersByUser(currentUserName).get(0).getCustomer().getCompanyName());
+        System.out.println(getAllArchivedOrdersByUser(currentUserName).get(0).getCustomer().getCompanyName());
         return "orders";
     }
 

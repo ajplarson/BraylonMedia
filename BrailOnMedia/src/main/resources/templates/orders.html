@@ -89,7 +89,7 @@
                 <tbody>
                     <tr th:each="saleA : ${salesArchived}">
                         <td th:text="${saleA.orderId}">Order ID</td>
-                        <td th:text="${saleA.customer.customerFirstName} + ' ' + ${sale.customer.customerLastName}">
+                        <td th:text="${saleA.customer.customerFirstName} + ' ' + ${saleA.customer.customerLastName}">
                             Customer First and Last Name</td>
                         <td th:text="${saleA.customer.companyName}">Company</td>
                         <td th:text="${saleA.orderDate}">Order Date</td>
