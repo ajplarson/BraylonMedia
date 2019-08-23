@@ -23,3 +23,10 @@ img.center {
     margin-left: auto;
     margin-right: auto;
     }
+
+    #theCalendar{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #F5F5F5;
+    }
