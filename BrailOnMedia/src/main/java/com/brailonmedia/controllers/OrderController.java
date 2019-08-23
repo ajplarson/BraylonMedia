@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class OrderController {
-    
+
     private final String PENDING = "pending";
     private final String COMPLETED = "completed";
     private final String ARCHIVED = "archived";
@@ -38,11 +38,10 @@ public class OrderController {
     }
 
     @GetMapping("/orders/all")
-    public String allOrders(Model model) {
-        model.addAttribute("orders", orderDao.findAll());
-        model.addAttribute("users", userDao.findAll());
-        model.addAttribute("customers", customerDao.findAll());
-
+    public String allOrders(Model model, Principal p) {
+        model.addAttribute("salesPending", getAllPendingOrdersByUser(p.getName()));
+        model.addAttribute("salesArchived", getAllArchivedOrdersByUser(p.getName()));
+        model.addAttribute("salesCompleted", getAllCompletedOrdersByUser(p.getName()));
         return "orders";
     }
 
@@ -99,68 +98,67 @@ public class OrderController {
 
         return "redirect:/orders";
     }
-    
-    //Basically, this is the service layer
 
+    //Basically, this is the service layer
     private String currentUserNameSimple(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         return principal.getName();
     }
-    
-    private List<Order> getAllPendingOrdersByUser(String username){
+
+    private List<Order> getAllPendingOrdersByUser(String username) {
         return orderDao.findAllByStatusAndUserName(PENDING, username);
     }
-    
-    private List<Order> getAllCompletedOrdersByUser(String username){
+
+    private List<Order> getAllCompletedOrdersByUser(String username) {
         return orderDao.findAllByStatusAndUserName(COMPLETED, username);
     }
-    
-    private List<Order> getAllArchivedOrdersByUser(String username){
+
+    private List<Order> getAllArchivedOrdersByUser(String username) {
         return orderDao.findAllByStatusAndUserName(ARCHIVED, username);
     }
-    
-    private List<Order> getAllPendingOrders(){
+
+    private List<Order> getAllPendingOrders() {
         return orderDao.findAllByStatus(PENDING);
     }
-    
-    private int getTotalNumberOfPendingOrders(){
+
+    private int getTotalNumberOfPendingOrders() {
         return getAllPendingOrders().size();
     }
-    
-    private List<Order> getAllCompletedOrders(){
+
+    private List<Order> getAllCompletedOrders() {
         return orderDao.findAllByStatus(COMPLETED);
     }
-    
-    private List<Order> getAllArchivedOrders(){
+
+    private List<Order> getAllArchivedOrders() {
         return orderDao.findAllByStatus(ARCHIVED);
     }
-    
-    private List<Order> getAllCompletedOrdersInPastWeek(){
+
+    private List<Order> getAllCompletedOrdersInPastWeek() {
         return orderDao.findAllCompletedDateLimited(LocalDateTime.now().minusDays(7));
     }
-    
-    private int getNumberOfCompletedOrdersInPastWeek(){
+
+    private int getNumberOfCompletedOrdersInPastWeek() {
         return getAllCompletedOrdersInPastWeek().size();
     }
-    
-    private int getTotalNumberOfSalesReps(){
+
+    private int getTotalNumberOfSalesReps() {
         return userDao.findSalesRepCount();
     }
-    
-    private BigDecimal getTotalRevenueOfCompletedOrdersInPastWeek(){
+
+    private BigDecimal getTotalRevenueOfCompletedOrdersInPastWeek() {
         BigDecimal total = BigDecimal.ZERO;
-        for(Order order : getAllCompletedOrdersInPastWeek()){
+        for (Order order : getAllCompletedOrdersInPastWeek()) {
             total.add(order.getPrice());
         }
         return total;
     }
-    
-    private BigDecimal getTotalRevenueForPendingOrders(){
+
+    private BigDecimal getTotalRevenueForPendingOrders() {
         BigDecimal total = BigDecimal.ZERO;
-        for(Order order : getAllPendingOrders()){
+        for (Order order : getAllPendingOrders()) {
             total.add(order.getPrice());
         }
         return total;
     }
-    
+
 }
