@@ -8,12 +8,14 @@ package com.brailonmedia.controllers;
 import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.SalesVisitDao;
+import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Customer;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,11 +32,12 @@ public class SaleController {
     private OrderDao oDao;
     private SalesVisitDao sVisit;
     private CustomerDao cDao;
-
-    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao) {
+    private UserDao uDao;
+    public SaleController(OrderDao oDao, SalesVisitDao sVisit, CustomerDao cDao,UserDao udao) {
         this.oDao = oDao;
         this.sVisit = sVisit;
         this.cDao = cDao;
+        this.uDao = uDao;
     }
     @GetMapping("/")
     public String displayLanding(){
@@ -49,7 +52,10 @@ public class SaleController {
 
     @GetMapping("/salesCustomers")
     public String displayCustomers(Model model) {
-        List<Customer> customerList = cDao.findAll();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        int userId = uDao.findByUsername(principal.toString()).getUserId();
+        List<Customer> customerList = cDao.findAllCustomersByUser(userId);
         model.addAttribute("customers", customerList);
         return "customers";
     }
@@ -66,9 +72,5 @@ public class SaleController {
         return "redirect:/salesCustomers";
     }
 
-    private String currentUserNameSimple(HttpServletRequest request) {
-        Principal principal = request.getUserPrincipal();
-        return principal.getName();
-    }
 
 }
