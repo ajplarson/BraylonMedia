@@ -51,6 +51,8 @@ create table `userRole`(
 	foreign key (roleId) references Role(roleId)
 );
 insert into userRole values (1,2),(2,1),(3,3);
+
+-- andrew = sales big al = admin daveson = exec
 create table `Product` (
 	productId int primary key auto_increment,
     productName varchar(50) not null,
