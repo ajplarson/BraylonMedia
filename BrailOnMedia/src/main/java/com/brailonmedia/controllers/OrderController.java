@@ -161,13 +161,8 @@ public class OrderController {
         }
         return total;
     }
-<<<<<<< HEAD
     
     private List<User> getAllSalesReps(){
         return userDao.findAllSalesReps();
     }
-    
-=======
-
->>>>>>> 657e6fe845fd9cb46e91356c163d28296cc95b45
 }
