@@ -60,7 +60,6 @@ public class OrderController {
         return "order-add";
     }
 
-<<<<<<< HEAD
 //    @GetMapping("/orders/add/")
 //    public String addOrderToCustomer(@PathVariable int customerId, Order order, Model model) {
 //        model.addAttribute("users", userDao.findAll());
@@ -92,26 +91,25 @@ public class OrderController {
 //    @PostMapping("/orders/add/")
 //    public String addAssignment(@Valid Order order,
 //            BindingResult result, Model model, Principal p) {
->>>>>>> 5381440a005b1036b7e10b83c59f2c166ab94304
-
-        if (result.hasErrors()) {
-            model.addAttribute("users", userDao.findAll());
-            model.addAttribute("customers", customerDao.findAll());
-            return "order-add";
-        }
-        
-        order = orderDao.save(order);
-        
-        User user = userManager.getUserByUsername(p.getName());
-        List<Order> orders = user.getOrders();
-        orders.add(order);
-        user.setOrders(orders);
-        
-        user = userDao.save(user);
-
-        return "redirect:/";
-    }
-
+//
+//        if (result.hasErrors()) {
+//            model.addAttribute("users", userDao.findAll());
+//            model.addAttribute("customers", customerDao.findAll());
+//            return "order-add";
+//        }
+//        
+//        order = orderDao.save(order);
+//        
+//        User user = userManager.getUserByUsername(p.getName());
+//        List<Order> orders = user.getOrders();
+//        orders.add(order);
+//        user.setOrders(orders);
+//        
+//        user = userDao.save(user);
+//
+//        return "redirect:/";
+//    }
+//
     @GetMapping("/orders/edit/{id}")
     public String editOrder(@PathVariable int id, Model model) {
         Optional<Order> o = orderDao.findById(id);
