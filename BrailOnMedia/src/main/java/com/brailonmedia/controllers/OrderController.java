@@ -4,6 +4,7 @@ import com.brailonmedia.data.CustomerDao;
 import com.brailonmedia.data.OrderDao;
 import com.brailonmedia.data.UserDao;
 import com.brailonmedia.entities.Order;
+import com.brailonmedia.entities.User;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -161,6 +162,10 @@ public class OrderController {
             total.add(order.getPrice());
         }
         return total;
+    }
+    
+    private List<User> getAllSalesReps(){
+        return userDao.findAllSalesReps();
     }
     
 }
