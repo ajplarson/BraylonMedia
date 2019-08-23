@@ -65,9 +65,14 @@ public class SaleController {
         return "customer-add";
     }
 
+    @GetMapping("/calendar")
+    public String displayCalendar() {
+        return "calendar";
+    }
+
     @PostMapping("/salesAdd")
     public String addCustomer(@Valid Customer customer, BindingResult result) {
         cDao.save(customer);
         return "redirect:/salesCustomers";
-    }   
+    }
 }
