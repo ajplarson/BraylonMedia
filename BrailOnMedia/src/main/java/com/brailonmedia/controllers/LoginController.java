@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class LoginController {
-    
+
     private UserManager userManager;
-    
+
     @Autowired
-    public LoginController(UserManager userManager){
+    public LoginController(UserManager userManager) {
         this.userManager = userManager;
     }
 
@@ -24,9 +24,13 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/")
+    public String displayLanding() {
+        return "redirect:/salesHome";
+    }
+
 //    @GetMapping("/")
 //    public String adsgsijd() {
 //        return "salesHome";
 //    }
-
 }
