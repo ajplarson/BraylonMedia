@@ -13,6 +13,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,11 +39,13 @@ public class OrderController {
         this.customerDao = customerDao;
     }
 
-    @GetMapping("/orders/all")
+    @GetMapping("/orders")
     public String allOrders(Model model, Principal p) {
-        model.addAttribute("salesPending", getAllPendingOrdersByUser(p.getName()));
-        model.addAttribute("salesArchived", getAllArchivedOrdersByUser(p.getName()));
-        model.addAttribute("salesCompleted", getAllCompletedOrdersByUser(p.getName()));
+        String currentUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("salesPending", getAllPendingOrdersByUser(currentUserName));
+        model.addAttribute("salesArchived", getAllArchivedOrdersByUser(currentUserName));
+        model.addAttribute("salesCompleted", getAllCompletedOrdersByUser(currentUserName));
+        System.out.println(getAllPendingOrdersByUser(currentUserName).get(0).getCustomer().getCompanyName());
         return "orders";
     }
 
@@ -77,7 +80,6 @@ public class OrderController {
 //
 //        return "redirect:/";
 //    }
-
     @PostMapping("/orders/add/{customerId}")
 
     public String addAssignment(@PathVariable int customerId, @Valid Order order,
