@@ -1,5 +1,5 @@
 # BraylonMedia
-Full Stack Web Application for Braylon Media
+Web Application for Braylon Media
 Developed by Jack Elder, Chris Sturm, Dan Pedersen, Nick Raffalo, Vincent Squillace, Ashley Kellen, Andrew Larson, and Jake Oak.
 
 Braylon Media (a fictitious company) had a problem keeping track of transactions and customer records.
